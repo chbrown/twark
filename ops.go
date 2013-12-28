@@ -2,13 +2,12 @@ package twark
 
 import (
   "fmt"
+  "github.com/ChimeraCoder/anaconda"
   "net/url"
   "strconv"
 )
 
-func FetchUser(screen_name string) {
-  api := RandomApi()
-  // fmt.Println(api)
+func FetchUser(api *anaconda.TwitterApi, screen_name string) {
   headers := Headers{
     "screen_name":         screen_name,
     "include_entities":    "true",
@@ -52,8 +51,8 @@ func FetchUser(screen_name string) {
   fmt.Printf("Downloaded %d tweets for screen name: %q\n", ntweets, screen_name)
 }
 
-func PrintTimeline() {
-  api := RandomApi()
+func PrintTimeline(api *anaconda.TwitterApi) {
+  // api := RandomApi()
   // fmt.Println(api)
 
   // searchResult, _ := api.GetSearch("golang", nil)

@@ -6,8 +6,6 @@ import (
   "github.com/chbrown/twark/csv_with_header"
   "math/rand"
   "net/url"
-  "os/user"
-  "path"
   "time"
 )
 
@@ -26,15 +24,7 @@ func (headers Headers) Values() (values url.Values) {
   return
 }
 
-func RandomApi() *anaconda.TwitterApi {
-  u, err := user.Current()
-  if err != nil {
-    panic(err)
-  }
-
-  // Alternatively: if path[:2] == "~/" { path = strings.Replace(path, "~/", dir, 1) }
-  accounts_filepath := path.Join(u.HomeDir, ".twitter")
-
+func ChooseApi(accounts_filepath string) *anaconda.TwitterApi {
   accounts := csv_with_header.ReadAll(accounts_filepath)
 
   now_source := rand.NewSource(time.Now().UTC().UnixNano())
