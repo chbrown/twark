@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-  twark.PrintTimeline()
+  twark.FetchUser("chbrown")
 }

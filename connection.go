@@ -11,52 +11,19 @@ import (
   "time"
 )
 
-func init() {
-  // go's rand uses the same seed on each run by default (weird!)
-  rand.Seed(time.Now().UTC().UnixNano())
-}
+// func init() {
+// go's rand uses the same seed on each run by default (weird!)
+// rand.Seed(time.Now().UTC().UnixNano())
+// }
 
-func PrintTimeline() {
-  api := RandomApi()
-  // fmt.Println(api)
+type Headers map[string]string
 
-  // timeline, err := api.GetHomeTimeline()
-  timeline, err := api.GetUserTimeline(url.Values{
-    "screen_name": []string{"chbrown"},
-    "count":       []string{"100"},
-  })
-  if err != nil {
-    panic(err)
+func (headers Headers) Values() (values url.Values) {
+  values = make(url.Values, len(headers))
+  for key, val := range headers {
+    values[key] = []string{val}
   }
-
-  // searchResult, _ := api.GetSearch("golang", nil)
-  for _, tweet := range timeline {
-    // type Tweet struct:
-    // Source        string
-    // Id            int64
-    // Retweeted     bool
-    // Favorited     bool
-    // User          TwitterUser
-    // Truncated     bool
-    // Text          string
-    // Retweet_count int64
-    // Id_str        string
-    // Created_at    string
-    // Entities      TwitterEntities
-    // fmt.Println(tweet.Text)
-    // tweet.User
-    // tweet.Entities
-    fmt.Println(
-      tweet.Source,
-      tweet.Id,
-      tweet.Retweeted,
-      tweet.Favorited,
-      tweet.Truncated,
-      tweet.Text,
-      tweet.Retweet_count,
-      tweet.Id_str,
-      tweet.Created_at)
-  }
+  return
 }
 
 func RandomApi() *anaconda.TwitterApi {

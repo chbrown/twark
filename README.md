@@ -4,6 +4,8 @@ Small-scale Twitter crawling and archiving.
 
 Like an ark, two of a kind, seven of another, no more.
 
+Alternate name: Tirror. You know, Twitter Mirror?
+
 
 ## Twitter API choices
 
