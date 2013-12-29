@@ -5,6 +5,7 @@ import (
   "flag"
   "fmt"
   "github.com/chbrown/twark"
+  "log"
   "os/user"
   "path"
 )
@@ -32,10 +33,16 @@ func main() {
 
   if actionName == "work" {
     screen_names := flag.Args()
-    api := twark.ChooseApi(accountsFilepath)
     for _, screen_name := range screen_names {
-      fmt.Println("Fetching Twitter user:", screen_name)
-      twark.FetchUser(api, screen_name)
+      err := twark.AddTask(screen_name)
+      if err != nil {
+        log.Println(err)
+      }
+    }
+    fmt.Println("Looping work tasks...")
+    for {
+      api := twark.ChooseApi(accountsFilepath)
+      twark.WorkTasks(api)
     }
   } else {
     err := errors.New("Unrecognized action: " + actionName)
