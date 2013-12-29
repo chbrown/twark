@@ -36,7 +36,8 @@ func main() {
     for _, screen_name := range screen_names {
       err := twark.AddTask(screen_name)
       if err != nil {
-        log.Println(err)
+        log.Fatal(err)
+        // log.Println(err)
       }
     }
     fmt.Println("Looping work tasks...")

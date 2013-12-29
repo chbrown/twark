@@ -9,11 +9,6 @@ import (
   "time"
 )
 
-// func init() {
-// go's rand uses the same seed on each run by default (weird!)
-// rand.Seed(time.Now().UTC().UnixNano())
-// }
-
 type Headers map[string]string
 
 func (headers Headers) Values() (values url.Values) {
