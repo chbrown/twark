@@ -9,7 +9,7 @@ Alternate name: Tirror. You know, Twitter Mirror?
 
 ## Twitter API choices
 
-- [anaconda](https://github.com/ChimeraCoder/anaconda) ([GoDoc](http://godoc.org/github.com/ChimeraCoder/anaconda)):
+- [anaconda](https://github.com/ChimeraCoder/anaconda) ([GoDoc](https://godoc.org/github.com/ChimeraCoder/anaconda)):
   Seems like the top pick for Twitter REST API calls (supports v1.1, OAuth only).
   As of today, last commit was 24 days ago.
 - [twittergo](https://github.com/kurrik/twittergo):
@@ -18,6 +18,11 @@ Alternate name: Tirror. You know, Twitter Mirror?
   Seems like top pick for streaming API calls, but I haven't tried it out yet.
 
 This project currently uses anaconda.
+
+
+### References
+
+- [REST API v1.1](https://dev.twitter.com/docs/api/1.1)
 
 
 ## License
